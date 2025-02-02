@@ -14,8 +14,7 @@ class handler(BaseHTTPRequestHandler):
 
         query = parse_qs(self.path.split('?', 1)[-1])
         names = query.get('name', [])
-
-        marks = [marks_data.get(name, 0) for name in names]  # Default 0 if not found
+        marks = [marks_data.get(name, 0) for name in names]
 
         response = {"marks": marks}
         self.wfile.write(json.dumps(response).encode())
